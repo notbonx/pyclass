@@ -71,7 +71,6 @@ class BankAccCard(BankAccount):
 #         BankAccCard.__init__(self, UserName, Number, Value, CardNumber, DateCard, CreditValue, CreditCurrency)
 #         self.__CreditValue = CreditValue
 #         self.__CreditCurrency = CreditCurrency
-#
 #     def getData(self):
 #         pass
 
