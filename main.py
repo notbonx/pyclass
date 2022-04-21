@@ -74,9 +74,8 @@ class BankAccCard(BankAccount):
 #     def getData(self):
 #         pass
 
-
 def main():
-    user = BankAccCard(432, 530, 1000, 42551901, 823)  # constructor
+    user = BankAccCard("Anton", 530, 1000)  # constructor
     print(user.getData())
 
     user = BankAccCard("Anton", "530 str", "1000 val")  # konstructor
