@@ -4,17 +4,17 @@ import inspect
 
 
 class BankAccount:
-    @dispatch(str, int, int)  # конструктор не нужно перегружать
+    #@dispatch(str, int, int)  # конструктор не нужно перегружать
     def __init__(self, UserName, Number, Value):
         self.__UserName = UserName
         self.__Number = Number
         self.__Value = Value
 
-    @dispatch(str, str, str)
-    def __init__(self, UserName, Number, Value):
-        self.__UserName = UserName
-        self.__Number = Number
-        self.__Value = Value
+    # @dispatch(str, str, str)
+    # def __init__(self, UserName, Number, Value):
+    #     self.__UserName = UserName
+    #     self.__Number = Number
+    #     self.__Value = Value
 
     def setData(self, UserName, Number, Value):  # setter
         self.__UserName = UserName
@@ -60,10 +60,13 @@ class BankAccount:
 
 # создать дочерние классы с двумя полями
 class BankAccCard(BankAccount):
-    def __int__(self, UserName, Number, Value, CardNumber, DateCard):
-        super().__init__(self, UserName, Number, Value)
+    def __init__(self, UserName, Number, Value, CardNumber, DateCard):
+        BankAccount.__init__(self, UserName, Number, Value)
         self.__CardNumber = CardNumber
         self.__DateCard = DateCard
+
+    def getData(self):
+        return super().getData(), self.__CardNumber, self.__DateCard
 
 
 # class BankAccCardCredit(BankAccCard):
@@ -75,14 +78,21 @@ class BankAccCard(BankAccount):
 #         pass
 
 def main():
-    user = BankAccCard("Anton", 530, 1000)  # constructor
+    user = BankAccCard("Anton", 530, 1000, 546, 456)  # constructor
     print(user.getData())
 
-    user = BankAccCard("Anton", "530 str", "1000 val")  # konstructor
-    print(user.getData())
+    # user = BankAccount("Anton", 530, 1000)
+    # print(user.getData())
 
-
+    # user = BankAccCard("Anton", "530 str", "1000 val")  # konstructor
+    # print(user.getData())
+    #
+    #
 if __name__ == '__main__':
     main()
 # i hate my life but i hate you more
 # i love little girls
+# github update
+#     git add --all
+#     git commit -m "pyclass#main: update to work version"
+#     git push origin
