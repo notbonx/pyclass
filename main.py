@@ -69,16 +69,17 @@ class BankAccCard(BankAccount):
         return super().getData(), self.__CardNumber, self.__DateCard
 
 
-# class BankAccCardCredit(BankAccCard):
-#     def __init__(self, UserName, Number, Value, CardNumber, DateCard, CreditValue, CreditCurrency):
-#         BankAccCard.__init__(self, UserName, Number, Value, CardNumber, DateCard, CreditValue, CreditCurrency)
-#         self.__CreditValue = CreditValue
-#         self.__CreditCurrency = CreditCurrency
-#     def getData(self):
-#         pass
+class BankAccCardCredit(BankAccCard):
+    def __init__(self, UserName, Number, Value, CardNumber, DateCard, CreditValue, CreditCurrency):
+        BankAccCard.__init__(self, UserName, Number, Value, CardNumber, DateCard)
+        self.__CreditValue = CreditValue
+        self.__CreditCurrency = CreditCurrency
+
+    def getData(self):
+        return super().getData(), self.__CreditValue, self.__CreditCurrency
 
 def main():
-    user = BankAccCard("Anton", 530, 1000, 546, 456)  # constructor
+    user = BankAccCardCredit("Anton", 530, 1000, 425519, 823, 0, "$")  # constructor
     print(user.getData())
 
     # user = BankAccount("Anton", 530, 1000)
